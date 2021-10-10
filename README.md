@@ -53,7 +53,7 @@ The base url is https://green-thumb-64168.uc.r.appspot.com/
 }
 ```
 
-Import [Postman Collection](https://github.com/RDCMDT/mdt-interview-homework-GAE/tree/main/postman_collection) and find out more API usage.
+Download [Postman](https://www.postman.com/product/rest-client/) and import [Postman Collection](https://github.com/RDCMDT/mdt-homework-instruction/blob/master/mdt-homework-apis.postman_collection.json) to find out more APIs usage.
 
 ### Wireframe
 
