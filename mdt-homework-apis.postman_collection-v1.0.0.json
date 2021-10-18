@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e31c9d0c-ccb3-41b4-8a83-1e1159b1c765",
+		"_postman_id": "13514aa8-13f0-42ad-9b11-349562574df8",
 		"name": "mdt-homework-apis",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -36,7 +36,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"alice\",\n    \"password\": \"123456\"\n}"
+					"raw": "{\n    \"username\": \"test\",\n    \"password\": \"asdasd\"\n}"
 				},
 				"url": {
 					"raw": "{{url}}/login",
@@ -84,7 +84,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"receipientUsername\": \"bob\",\n    \"amount\": 1000,\n    \"description\": \"testing\"\n}"
+					"raw": "{\n    \"receipientAccountNo\": \"3762-351-2673\",\n    \"amount\": 1000,\n    \"description\": \"testing\"\n}"
 				},
 				"url": {
 					"raw": "{{url}}/transfer",
@@ -100,6 +100,39 @@
 		},
 		{
 			"name": "/balance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/balance",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/payees",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -193,7 +226,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"alice\",\n    \"password\": \"123456\"\n}"
+					"raw": "{\n    \"username\": \"test\",\n    \"password\": \"asdasd\"\n}"
 				},
 				"url": {
 					"raw": "{{url}}/register",
@@ -231,7 +264,7 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "https://green-thumb-64168.uc.r.appspot.com/"
+			"value": "http://localhost:8080"
 		},
 		{
 			"key": "token",

@@ -14,7 +14,7 @@ Your project should utilise all the APIs and we will evaluate your project based
 2. User is able to register
 3. User is able to login
 4. User is able to view the balances / transactions history in the account
-5. User is able to make transfer to a receipient account via receipient's `username` or `accountNo`
+5. User is able to make transfer to a receipient
 
 <b>You are free to use any other libraries that you feel is needed for this project. But we are hoping candidate DO NOT heavily rely on UI library so that we can analyse your coding skills better.</b>
 
@@ -22,30 +22,23 @@ Have fun with the project and good luck!
 
 ### APIs Usage
 
-5 APIs have been provided for you via postman collection
+6 APIs have been provided for you via postman collection
 
 1. POST /login
 2. POST /register
 3. GET /balance
-4. GET /transactions
-5. POST /transfer
+4. GET /payees
+5. GET /transactions
+6. POST /transfer
 
 The base url is https://green-thumb-64168.uc.r.appspot.com/
 
 1. Register new user via `/register` by input username and password
 2. Authenticate the user and retrieve the `jwt-token` via "/login"
 3. In the subsequence apis call, pass the `jwt-token` into the header.
-4. To make a transfer via `/transfer`, you may pass the request payload as below
+4. To make a transfer via `/transfer`, pass in the target `accountNo` you retrieve from `/payees`
 
 ```
-// make transfer via receipient's username
-{
-    "receipientUsername": "[receipient-username]",
-    "amount": 1000,
-    "description": "testing"
-}
-
-// OR make transfer via receipient's accountNo
 {
     "receipientAccountNo": "[receipient-account-no]",
     "amount": 1000,
@@ -53,7 +46,7 @@ The base url is https://green-thumb-64168.uc.r.appspot.com/
 }
 ```
 
-Import [Postman Collection](https://github.com/RDCMDT/mdt-interview-homework-GAE/tree/main/postman_collection) and find out more API usage.
+Import the postman collection we provided to find out more APIs usage.
 
 ### Wireframe
 
@@ -70,24 +63,30 @@ Push your source code to github and submit the repo link.
 ### Evaluation Criteria
 
 - The required functions are working:
+  - Login
+  - Display dashboard
+  - Make transaction
+  - Refresh
+
+* The required functions are working:
 
   - Login
   - Display dashboard
   - Make transaction
   - Refresh
 
-- The code is well-designed
+* The code is well-designed
 
   - Function
   - Interaction
 
-- The UI is sensible and looks good
+* The UI is sensible and looks good
 
-- The code isn't more complex than it needs to be
+* The code isn't more complex than it needs to be
 
-- Code has appropriate unit tests
+* Code has appropriate unit tests
 
   - Tests are well designed
   - Coverage
 
-- Code is properly documented in README.md
+* Code is properly documented in README.md
