@@ -55,7 +55,7 @@ The wireframe is created for your references. You are free to amend it and show 
 ![register](https://user-images.githubusercontent.com/16426747/136692349-0ddc34fc-d25d-486a-b8c0-7c84ea3377b1.png)
 ![login](https://user-images.githubusercontent.com/16426747/136692347-279c946a-3a6a-47b4-861b-fa5ca3f4b22e.png)
 ![dashboard](https://user-images.githubusercontent.com/16426747/136692345-3864e377-524a-4472-9d52-9eabce6cde3b.png)
-![transfer](https://user-images.githubusercontent.com/16426747/136692348-71cc46df-301c-46bf-96d5-7b578870d838.png)
+![transfer](https://user-images.githubusercontent.com/16426747/137746542-a771c4f7-3dfb-4b8a-907e-c81291f79264.png)
 
 ### Submission
 
