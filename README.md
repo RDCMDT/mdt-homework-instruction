@@ -5,6 +5,10 @@ This assignment will be similar to what you will be doing in your daily task. As
 In your day to day work, you will be liaising with the various departments, from backend to product owners to understand the requirements, refine stories and deliver what is needed in scrum sprints.
 
 In this assignment, the backend, a server running on GCP, is already setup and you will just need to deliver the UI portion of it by consuming the APIs we provided.
+Please build this project with one of the following
+- `Swift`
+- `Kotlin / Java`
+- `ReactJs, Single-Page-Application (SPA)`
 
 We have also provided wireframes for your reference but please feel free to amend it as you see fit and we can walkthrough your ideas during your follow up interview.
 
