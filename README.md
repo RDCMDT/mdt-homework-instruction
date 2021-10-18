@@ -15,6 +15,7 @@ Your project should utilise all the APIs and we will evaluate your project based
 3. User is able to login
 4. User is able to view the balances / transactions history in the account
 5. User is able to make transfer to a receipient
+6. Project is covered by unit test. You are free to use any testing library.
 
 <b>You are free to use any other libraries that you feel is needed for this project. But we are hoping candidate DO NOT heavily rely on UI library so that we can analyse your coding skills better.</b>
 
@@ -46,7 +47,7 @@ The base url is https://green-thumb-64168.uc.r.appspot.com/
 }
 ```
 
-Import the postman collection we provided to find out more APIs usage.
+Download [Postman](https://www.postman.com/product/rest-client/) and import the postman collection we provided to find out more APIs usage.
 
 ### Wireframe
 
@@ -72,8 +73,7 @@ Push your source code to github and submit the repo link.
 
   - Login
   - Display dashboard
-  - Make transaction
-  - Refresh
+  - Make transfer
 
 * The code is well-designed
 
