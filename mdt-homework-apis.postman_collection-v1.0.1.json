@@ -153,12 +153,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/balance",
+					"raw": "{{url}}/payees",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"balance"
+						"payees"
 					]
 				}
 			},
@@ -264,7 +264,7 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "http://localhost:8080"
+			"value": "https://green-thumb-64168.uc.r.appspot.com"
 		},
 		{
 			"key": "token",
