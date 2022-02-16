@@ -30,6 +30,16 @@ module.exports = {
             "React": "react",
         }),
     ],
-    resolve: { extensions: ['', '.js', '.jsx','.css'],//add '.css' "root": __dirname }
+    resolve: { extensions: ['', '.js', '.jsx', '.css'] },
+    webpack: (config, { isServer }) => {
+        // Fixes npm packages that depend on `fs` module
+        if (!isServer) {
+            config.node = {
+                fs: 'empty'
+            }
+        }
+
+        return config
+    }
     // test: /\.css$/, loader: "style-loader!css-loader"
 }
