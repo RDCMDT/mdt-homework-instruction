@@ -8,7 +8,24 @@ const config = {
   testEnvironment: "jsdom",
   moduleNameMapper: {
     "^.+\\.svg$": "jest-svg-transformer",
-  }
+  },
+  collectCoverage: true,
+  roots: [
+    "<rootDir>/test",
+    "<rootDir>/src"
+  ],
+  testRegex: "((\\.|/*.)(test))\\.js?$",
+  moduleFileExtensions: [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ]
+  // collectCoverageFrom: [
+  //   "src/pages/**"
+  // ]
 };
 
 module.exports = config;
