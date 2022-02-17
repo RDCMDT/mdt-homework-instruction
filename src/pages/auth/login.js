@@ -1,6 +1,8 @@
 import React from 'react'
-import { Button, InputGroup, FormControl } from 'react-bootstrap';
+import { Button, InputGroup, FormControl, Row, Col, Container } from 'react-bootstrap';
 import Auth from '../../helpers'
+import ButtonDefault from '../../components/Button/ButtonDefault';
+import Helpers from '../../helpers/index'
 
 class Login extends React.Component {
 
@@ -26,22 +28,24 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <h1>Login</h1>
-                <InputGroup className="mb-3">
-                    <InputGroup.Text>Email</InputGroup.Text>
-                    <FormControl
-                        onChange={(e) => this.setState({ email: e.target.value })}
-                    />
-                </InputGroup>
-                <InputGroup className="mb-3">
-                    <InputGroup.Text>Password</InputGroup.Text>
-                    <FormControl
-                        onChange={(e) => this.setState({ password: e.target.value })}
-                    />
-                </InputGroup>
-                <Button variant="outline-primary" onClick={() => this.handleSubmit()}>Login</Button>
-                <Button variant="dark" onClick={() => this.toRegister()}>Register</Button>
-            </div>
+                <Row className='mt-80'>
+                    <Col xs={{ span: 10, offset: 1 }} >
+                        <h1><strong>Login</strong></h1>
+                    </Col>
+                    <div className='formLogin'>
+                        <Col xs={{ span: 10, offset: 1 }} >
+                            <input className='inputDefault' placeholder='Email' onChange={(e) => this.setState({ email: e.target.value })}></input>
+                        </Col>
+                        <Col xs={{ span: 10, offset: 1 }} >
+                            <input type='password' className='inputDefault' placeholder='Password' onChange={(e) => this.setState({ password: e.target.value })}></input>
+                        </Col>
+                    </div>
+                    <Col xs={{ span: 10, offset: 1 }} >
+                        <ButtonDefault class="buttonLogin" text="Login" color="black" event={() => { this.handleSubmit() }} float={true} />
+                        <ButtonDefault class="buttonRegistration" text="Register" color="white" event={() => { this.toRegister() }} float={true} />
+                    </Col>
+                </Row>
+            </div >
         );
     }
 }

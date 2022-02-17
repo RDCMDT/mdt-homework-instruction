@@ -16,6 +16,7 @@ import Auth from './helpers'
 import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 import './assets/css/styles.scss';
+import Transfer from './pages/Transfer';
 
 let useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(UI.getWindowDimensions());
@@ -60,9 +61,10 @@ let App = () => {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/" element={token == null ? <Login /> : <Home />} />
-        <Route exact path="/posts" element={token == null ? <Login /> : <PostIndex />} />
+        <Route exact path="/transfer" element={token == null ? <Login /> : <Transfer />} />
+        {/* <Route exact path="/posts" element={token == null ? <Login /> : <PostIndex />} />
         <Route exact path="/posts/create" element={token == null ? <Login /> : <PostCreate />} />
-        <Route exact path="/posts/edit/:id" element={token == null ? <Login /> : <PostEdit />} />
+        <Route exact path="/posts/edit/:id" element={token == null ? <Login /> : <PostEdit />} /> */}
         <Route exact path="*" element={<NotFoundRoute />} />
       </Routes>
 

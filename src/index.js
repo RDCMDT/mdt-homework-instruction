@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from "./store";
 import { Provider } from 'react-redux';
+import 'font-awesome/css/font-awesome.min.css';
 
 ReactDOM.render(
   <Provider store={store}>

@@ -80,7 +80,7 @@ const auth = {
         await this.removeCookies('accountNo');
     },
     currencyFormat(amount) {
-        const price = Dinero({ amount: amount, currency: 'USD' }).toFormat('$0,0.00');
+        const price = Dinero({ amount: amount, currency: 'IDR' }).toFormat('$0,0.00');
         return price;
     }
 }

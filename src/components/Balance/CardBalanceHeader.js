@@ -25,11 +25,15 @@ class CardBalanceHeader extends React.Component {
                     <Card className="shadow-lg m-0 p-0" style={{ borderRadius: '0px 50px 50px 0px' }}>
                         <Card.Body className="">
                             <h5><strong>You Have</strong></h5>
-                            <h1>SGD {this.state.balance}</h1>
-                            <p className="lead mt-4">Account No</p>
-                            <h2><strong>{this.state.accountNo}</strong></h2>
-                            <p className="lead mt-4">Account No</p>
-                            <h2><strong>{this.state.accountHolder}</strong></h2>
+                            <h1 className='heading-1'><strong className='balance'>SGD {this.state.balance}</strong></h1>
+                            <p className="lead mt-4">
+                                Account No
+                                <h2><strong>{this.state.accountNo}</strong></h2>
+                            </p>
+                            <p className="lead mt-4">
+                                Account Holder
+                                <h2><strong>{this.state.accountHolder}</strong></h2>
+                            </p>
                         </Card.Body>
                     </Card>
                 </Col>

@@ -8,13 +8,13 @@ class ButtonDefault extends React.Component {
         this.state = {}
     }
 
-    goTo() {
-        window.location.href = this.props.url;
+    eventHandler() {
+        this.props.event();
     }
 
     render() {
         return (
-            <button className={this.props.color === 'black' ? 'buttonDefault' : 'buttonDefaultInverted'} onClick={() => { this.goTo() }}>
+            <button className={`${this.props.color === 'black' ? 'buttonDefault' : 'buttonDefaultInverted'} ${this.props.float ? 'floatButton' : ''} ${this.props.class}`} onClick={() => { this.eventHandler() }}>
                 {this.props.text}
             </button>
         );

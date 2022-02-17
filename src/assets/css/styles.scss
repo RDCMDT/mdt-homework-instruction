@@ -3,6 +3,7 @@ body {
         "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden !important;
 }
 
 .content {
@@ -37,4 +38,58 @@ body {
     color: black;
     font-weight: bold;
     font-size: 1.3rem;
+}
+
+.buttonRegistration {
+    bottom: 0 !important;
+}
+.buttonLogin {
+    bottom: 4rem !important;
+}
+
+.buttonLeft {
+    font-size: 2rem;
+}
+
+.currencyNumberTransaction {
+    text-align: right !important;
+}
+
+.inputDefault {
+    height: 3rem;
+    width: 100%;
+    border: .15rem solid black;
+    border-radius: .1rem;
+    margin-bottom: 1rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+.textAreaDefault {
+    height: 10rem;
+    width: 100%;
+    border: .15rem solid black;
+    border-radius: .1rem;
+    margin-bottom: 1rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.floatButton {
+    // position: fixed;
+    position: absolute;
+    bottom: 0;
+    // width: 21rem;
+    width: 85vw;
+}
+
+.formLogin{
+    margin-top: 15rem;
+}
+
+.balance {
+    font-size: 2.5rem;
 }
