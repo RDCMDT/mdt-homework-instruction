@@ -62,7 +62,7 @@ class CardBalanceHistory extends React.Component {
                                     </Col>
                                     <Col xs="6">
                                         <p className={item.transactionType === 'received' ? 'text-success currencyNumberTransaction' : 'text-danger currencyNumberTransaction'}>
-                                            <strong>{`${item.transactionType === 'received' ? '+' : '-'}${Helpers.currencyFormat(item.amount)}`}</strong><br />
+                                            <strong>{`${item.transactionType === 'received' ? '+' : '-'}${Helpers.currencyFormat(parseInt(item.amount))}`}</strong><br />
                                         </p>
                                     </Col>
                                 </Row>

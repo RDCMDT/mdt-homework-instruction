@@ -5,15 +5,24 @@ import CardBalanceHeader from '../components/Balance/CardBalanceHeader';
 import CardBalanceHistory from '../components/Balance/CardBalanceHistory';
 import ButtonDefault from '../components/Button/ButtonDefault';
 import React from 'react';
+import Swal from 'sweetalert2'
 
 class Transfer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            receipientAccountNo: '',
-            amount: '',
-            description: ''
+            payload: {
+                receipientAccountNo: '',
+                amount: 0,
+                description: '',
+            },
+            payeesList: []
         }
+    }
+    getPayees = async () => {
+        await Helpers.http('get', '/payees').then(res => {
+            this.setState({ payeesList: res.data.data });
+        })
     }
     logout = () => {
         Helpers.logout().then(() => {
@@ -23,6 +32,22 @@ class Transfer extends React.Component {
 
     goTo = (url) => {
         window.location.href = url;
+    }
+
+    handleTransfer = async () => {
+        await Helpers.http('post', '/transfer', this.state.payload).then(res => {
+            Swal.fire({
+                title: 'Success Transfer!',
+                text: `Sebesar ${this.state.payload.amount} sudah di transfer`,
+                icon: 'success',
+            }).then(() => {
+                window.location.reload();
+            })
+        })
+    }
+
+    async componentDidMount() {
+        await this.getPayees();
     }
 
     render() {
@@ -42,23 +67,28 @@ class Transfer extends React.Component {
                         <h1><strong>Transfer</strong></h1>
                     </Col>
                     <Col xs={{ span: 10, offset: 1 }} >
-                        {/* <input className='inputDefault' placeholder='Payee'></input> */}
-                        <select className='inputDefault' placeholder='Payee'>
-                            <option disabled selected>Payee</option>
-                            <option>asd</option>
-                            <option>dsa</option>
+                        <select className='inputDefault' placeholder='Payee' defaultValue={'DEFAULT'} onChange={(e) => { this.setState({ payload: { ...this.state.payload, receipientAccountNo: e.target.value } }) }}>
+                            <option value="DEFAULT" disabled>Payee</option>
+                            {
+                                this.state.payeesList.map((payee, index) => {
+                                    return (
+                                        <option value={payee.accountNo} key={payee.accountNo}>{payee.name}</option>
+                                    )
+                                })
+                            }
                         </select>
                     </Col>
                     <Col xs={{ span: 10, offset: 1 }} >
-                        <input className='inputDefault' placeholder='Amount'></input>
+                        <input className='inputDefault' placeholder='Amount' type="number" onChange={(e) => { this.setState({ payload: { ...this.state.payload, amount: parseInt(e.target.value) } }) }}></input>
                     </Col>
                     <Col xs={{ span: 10, offset: 1 }} >
-                        <textarea className='textAreaDefault' placeholder='Description'></textarea>
+                        <textarea className='textAreaDefault' placeholder='Description' onChange={(e) => { this.setState({ payload: { ...this.state.payload, description: e.target.value } }) }}></textarea>
                     </Col>
                     <Col xs={{ span: 10, offset: 1 }} >
-                        <ButtonDefault text="Transfer Now" color="black" event={() => { this.goTo('/transfer') }} float={true} />
+                        <ButtonDefault text="Transfer Now" color="black" event={() => { this.handleTransfer() }} float={true} />
                     </Col>
                 </Row>
+                {console.log(this.state.payload)}
             </div >
         )
     }

@@ -69,6 +69,7 @@ const auth = {
     async http(method = 'get', url, payload) {
         let base = await this.getBaseAPIUrl();
         if (method === 'get') {
+            axios.defaults.headers.common['Authorization'] = await this.getToken();
             return axios.get(base + url);
         } else {
             return axios.post(base + url, payload);
@@ -80,7 +81,7 @@ const auth = {
         await this.removeCookies('accountNo');
     },
     currencyFormat(amount) {
-        const price = Dinero({ amount: amount, currency: 'IDR' }).toFormat('$0,0.00');
+        const price = Dinero({ amount: amount, currency: 'USD' }).toFormat('$0,0.00');
         return price;
     }
 }

@@ -1,25 +1,49 @@
 import { useNavigate } from 'react-router-dom'
 import { Card, Container, Row, Col, Button } from 'react-bootstrap'
-import Auth from '../helpers'
+import Helpers from '../helpers'
 import CardBalanceHeader from '../components/Balance/CardBalanceHeader';
 import CardBalanceHistory from '../components/Balance/CardBalanceHistory';
 import ButtonDefault from '../components/Button/ButtonDefault';
 import React from 'react';
+import Swal from 'sweetalert2'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            balance: null
         }
     }
     logout = () => {
-        Auth.logout().then(() => {
+        Helpers.logout().then(() => {
             window.location.reload();
+        })
+    }
+
+    getBalance = async () => {
+        await Helpers.http('get', '/balance').then(res => {
+            this.setState({ balance: res.data });
         })
     }
 
     goTo = (url) => {
         window.location.href = url;
+    }
+
+    // handleTransfer = async () => {
+    //     await Helpers.http('post', '/transfer', this.state.payload).then(res => {
+    //         Swal.fire({
+    //             title: 'Success Transfer!',
+    //             text: `Sebesar ${this.state.payload.amount} sudah di transfer`,
+    //             icon: 'success',
+    //         }).then(() => {
+    //             window.location.reload();
+    //         })
+    //     })
+    // }
+
+    async componentDidMount() {
+        await this.getBalance();
     }
 
     render() {
@@ -32,7 +56,7 @@ class Home extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <CardBalanceHeader />
+                <CardBalanceHeader data={this.state.balance} />
                 <Row className='mt-5'>
                     <Col xs={{ span: 10, offset: 1 }} >
                         <p><strong>Your Transaction History</strong></p>
@@ -47,6 +71,7 @@ class Home extends React.Component {
                 <Row className='mt-5 mx-5 mb-5'>
                     <ButtonDefault text="Make Transfer" color="black" event={() => { this.goTo('/transfer') }} />
                 </Row>
+                {console.log(this.state.balance)}
             </div >
         )
     }

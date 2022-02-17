@@ -5,17 +5,22 @@ import Helpers from '../../helpers/index'
 class CardBalanceHeader extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            balance: '$123',
-            accountNo: '123-321',
-            accountHolder: 'John Doe',
-        }
+        this.state = {}
     }
 
     logout = () => {
         Helpers.logout().then(() => {
             window.location.reload();
         });
+    }
+
+    getUsername = async () => {
+        let uname = await Helpers.getCookies('username');
+        this.setState({ accountHolder: uname });
+    }
+
+    componentDidMount() {
+        this.getUsername();
     }
 
     render() {
@@ -25,14 +30,14 @@ class CardBalanceHeader extends React.Component {
                     <Card className="shadow-lg m-0 p-0" style={{ borderRadius: '0px 50px 50px 0px' }}>
                         <Card.Body className="">
                             <h5><strong>You Have</strong></h5>
-                            <h1 className='heading-1'><strong className='balance'>SGD {this.state.balance}</strong></h1>
+                            <h1 className='heading-1'><strong className='balance'>SGD {Helpers.currencyFormat(parseInt(this.props.data?.balance ?? 0))}</strong></h1>
                             <p className="lead mt-4">
-                                Account No
-                                <h2><strong>{this.state.accountNo}</strong></h2>
+                                <span>Account No</span> <br />
+                                <strong className='balance-sub-1-price'>{this.props.data?.accountNo}</strong>
                             </p>
                             <p className="lead mt-4">
-                                Account Holder
-                                <h2><strong>{this.state.accountHolder}</strong></h2>
+                                <span>Account Holder</span> <br />
+                                <strong className='balance-sub-1-price'>{this.state.accountHolder}</strong>
                             </p>
                         </Card.Body>
                     </Card>
