@@ -22,10 +22,11 @@ const config = {
     "jsx",
     "json",
     "node"
+  ],
+  collectCoverageFrom: [
+    "src/pages/**",
+    "src/components/**",
   ]
-  // collectCoverageFrom: [
-  //   "src/pages/**"
-  // ]
 };
 
 module.exports = config;

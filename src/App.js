@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Navbar, Container, Nav, Button } from 'react-bootstrap'
+import { Navbar, Container, Nav, Button, Row, Col } from 'react-bootstrap'
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Link, Routes, Router, BrowserRouter, useNavigate } from "react-router-dom";
@@ -8,14 +8,32 @@ import PostIndex from './pages/posts/Index'
 import PostCreate from './pages/posts/Create'
 import PostEdit from './pages/posts/Edit'
 import { Provider, useDispatch, useSelector } from "react-redux";
+import UI from './helpers/ui';
 
-import Auth from './helpers/auth'
 
-import Login from './pages/login/index';
-// import logo from './logo.svg';
-// import './assets/css/styles.scss';
+import Auth from './helpers'
+
+import Login from './pages/auth/login';
+import Register from './pages/auth/register';
+import './assets/css/styles.scss';
+
+let useWindowDimensions = () => {
+  const [windowDimensions, setWindowDimensions] = useState(UI.getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(UI.getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
 
 let App = () => {
+  console.log(useWindowDimensions());
   let navigate = useNavigate();
   const todos = useSelector(state => state.todoReducer.todos)
   const [token, setToken] = useState(null);
@@ -28,35 +46,24 @@ let App = () => {
     }
   })
 
-  if (token == null) {
+  const NotFoundRoute = () => {
     return (
-      <div>
-        <Login />
-      </div>
-    );
+      <h1>
+        Can't find this route 404
+      </h1>
+    )
   }
 
   return (
-    <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand to="/">EXPRESS.JS + REACT.JS</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/" className="nav-link">HOME</Nav.Link>
-              <Nav.Link as={Link} to="/posts" className="nav-link">POSTS</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
+    <div className='content'>
       <Routes>
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/posts" element={<PostIndex />} />
-        <Route exact path="/posts/create" element={<PostCreate />} />
-        <Route exact path="/posts/edit/:id" element={<PostEdit />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/" element={token == null ? <Login /> : <Home />} />
+        <Route exact path="/posts" element={token == null ? <Login /> : <PostIndex />} />
+        <Route exact path="/posts/create" element={token == null ? <Login /> : <PostCreate />} />
+        <Route exact path="/posts/edit/:id" element={token == null ? <Login /> : <PostEdit />} />
+        <Route exact path="*" element={<NotFoundRoute />} />
       </Routes>
 
     </div>

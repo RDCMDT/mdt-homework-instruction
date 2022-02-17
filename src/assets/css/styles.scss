@@ -1,50 +1,40 @@
 body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
         "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+.content {
+    width: 100%;
+    // border: 1px solid red;
 }
 
-.App {
-    text-align: center;
+.debug {
+    border: 1px solid red;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.mt-80{
+    margin-top: 50px !important;  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.buttonDefault {
+    border-radius: 1.5rem;
+    height: 3rem;
+    width: 100%;
+    background-color: #000;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 1.3rem;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.buttonDefaultInverted {
+    border-radius: 1.5rem;
+    height: 3rem;
+    width: 100%;
+    border: .15rem solid #000;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 1.3rem;
 }
