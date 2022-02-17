@@ -13,6 +13,7 @@
     "dinero.js": "^1.9.1",
     "font-awesome": "^4.7.0",
     "fs": "^0.0.1-security",
+    "moment": "^2.29.1",
     "postcss": "^8.4.6",
     "postcss-loader": "^6.2.1",
     "postcss-modules-extract-imports": "^3.0.0",

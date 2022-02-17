@@ -5,13 +5,14 @@ import CardBalanceHeader from '../components/Balance/CardBalanceHeader';
 import CardBalanceHistory from '../components/Balance/CardBalanceHistory';
 import ButtonDefault from '../components/Button/ButtonDefault';
 import React from 'react';
-import Swal from 'sweetalert2'
+
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            balance: null
+            balance: null,
+            historyTransaction: null
         }
     }
     logout = () => {
@@ -42,8 +43,34 @@ class Home extends React.Component {
     //     })
     // }
 
+    getHistoryTransaction = async () => {
+        let data = [];
+        await Helpers.http('get', '/transactions').then(res => {
+            data = res.data.data;
+        })
+
+        const groups = data.reduce((groups, item) => {
+            const date = item.transactionDate.split('T')[0];
+            if (!groups[date]) {
+                groups[date] = [];
+            }
+            groups[date].push(item);
+            return groups;
+        }, {});
+
+        const groupArrays = Object.keys(groups).map((date) => {
+            return {
+                date,
+                data: groups[date]
+            };
+        });
+
+        this.setState({ historyTransaction: groupArrays });
+    }
+
     async componentDidMount() {
         await this.getBalance();
+        await this.getHistoryTransaction();
     }
 
     render() {
@@ -64,14 +91,19 @@ class Home extends React.Component {
                 </Row>
                 <Row className='mt-5'>
                     <Col xs={{ span: 10, offset: 1 }} >
-                        <CardBalanceHistory />
-                        <CardBalanceHistory />
+                        {
+                            this.state.historyTransaction?.map((item, index) => {
+                                return (
+                                    <CardBalanceHistory key={index} data={item} />
+                                );
+                            })
+                        }
                     </Col>
                 </Row>
                 <Row className='mt-5 mx-5 mb-5'>
                     <ButtonDefault text="Make Transfer" color="black" event={() => { this.goTo('/transfer') }} />
                 </Row>
-                {console.log(this.state.balance)}
+                {console.log(this.state.historyTransaction)}
             </div >
         )
     }

@@ -34,9 +34,6 @@ let useWindowDimensions = () => {
 }
 
 let App = () => {
-  console.log(useWindowDimensions());
-  let navigate = useNavigate();
-  const todos = useSelector(state => state.todoReducer.todos)
   const [token, setToken] = useState(null);
 
   useEffect(() => {
@@ -46,6 +43,15 @@ let App = () => {
       });
     }
   })
+  console.log(useWindowDimensions().width);
+
+  if (useWindowDimensions().width >= 1000) {
+    return (
+      <div>
+        <h1>You must opened on mobile / tablet resolution. Please Resize It :)</h1>
+      </div>
+    )
+  }
 
   const NotFoundRoute = () => {
     return (
@@ -62,9 +68,6 @@ let App = () => {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/" element={token == null ? <Login /> : <Home />} />
         <Route exact path="/transfer" element={token == null ? <Login /> : <Transfer />} />
-        {/* <Route exact path="/posts" element={token == null ? <Login /> : <PostIndex />} />
-        <Route exact path="/posts/create" element={token == null ? <Login /> : <PostCreate />} />
-        <Route exact path="/posts/edit/:id" element={token == null ? <Login /> : <PostEdit />} /> */}
         <Route exact path="*" element={<NotFoundRoute />} />
       </Routes>
 
