@@ -1,22 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Navbar, Container, Nav, Button, Row, Col } from 'react-bootstrap'
-import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Link, Routes, Router, BrowserRouter, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
+// Component
 import Home from './pages/Home'
-import PostIndex from './pages/posts/Index'
-import PostCreate from './pages/posts/Create'
-import PostEdit from './pages/posts/Edit'
-import { Provider, useDispatch, useSelector } from "react-redux";
 import UI from './helpers/ui';
-
-
-import Auth from './helpers'
-
 import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 import './assets/css/styles.scss';
 import Transfer from './pages/Transfer';
+
+// Helpers
+import Helpers from './helpers'
 
 let useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(UI.getWindowDimensions());
@@ -38,7 +33,7 @@ let App = () => {
 
   useEffect(() => {
     if (token === null || token === undefined) {
-      Auth.getToken().then(a => {
+      Helpers.getToken().then(a => {
         setToken(a);
       });
     }
