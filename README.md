@@ -8,37 +8,39 @@ In this assignment, the backend, a server running on GCP, is already setup and y
 Please build this project with one of the following
 - `Swift`
 - `Kotlin / Java`
-- `ReactJs, Single-Page-Application (SPA)`
+- `ReactJS, Single-Page-Application (SPA)` - `Focus on Mobile Web`
 
-We have also provided wireframes for your reference but please feel free to amend it as you see fit and we can walkthrough your ideas during your follow up interview.
-
-Your project should utilise all the APIs and we will evaluate your project based on the following project criteria:
+We have also provided wireframes for your reference but please feel free to amend it as you see fit and we can walkthrough your ideas during your follow up interview. Your project should utilise the APIs we provided and we will evaluate your project based on the following project criteria:
 
 1. Project runs as expected without crashing
-2. User is able to register
-3. User is able to login
-4. User is able to view the balances / transactions history in the account
-5. User is able to make transfer to a receipient
-6. Project is covered by unit test. You are free to use any testing library.
+2. Project cover the main functions *(Please use our APIs to create some test data for yourself)* :
+   * Login
+   * Dashboard
+3. Project is covered with unit test. You are free to use any testing library.
+4. Bonus task. *(This is where you can make yourself to stand out)* :
+   * Register
+   * Transfer
 
-<b>You are free to use any other libraries that you feel is needed for this project. But we are hoping candidate DO NOT heavily rely on UI library so that we can analyse your coding skills better.</b>
-
+You are free to use any other libraries that you feel is needed for this project. But we are hoping candidate <b>DO NOT</b> heavily rely on UI library so that we can analyse your coding skills better.
 Have fun with the project and good luck!
 
 ### APIs Usage
 
 6 APIs have been provided for you via postman collection
-
+```
 1. POST /login
-2. POST /register
+2. POST /register - bonus task
+
 3. GET /balance
-4. GET /payees
-5. GET /transactions
-6. POST /transfer
+4. GET /transactions
+
+5. GET /payees - bonus task
+6. POST /transfer - bonus task
+```
 
 The base url is https://green-thumb-64168.uc.r.appspot.com/
 
-1. Register new user via `/register` by input username and password
+1. Register a new account via `/register`
 2. Authenticate the user and retrieve the `jwt-token` via "/login"
 3. In the subsequence apis call, pass the `jwt-token` into the header.
 4. To make a transfer via `/transfer`, pass in the target `accountNo` you retrieve from `/payees`
@@ -55,7 +57,7 @@ Download [Postman](https://www.postman.com/product/rest-client/) and import the 
 
 ### Wireframe
 
-The wireframe is created for your references. You are free to amend it and show us your creativity 😘
+The wireframe is created for your references. You are free to amend it and show us your creativity.
 ![register](https://user-images.githubusercontent.com/16426747/136692349-0ddc34fc-d25d-486a-b8c0-7c84ea3377b1.png)
 ![login](https://user-images.githubusercontent.com/16426747/136692347-279c946a-3a6a-47b4-861b-fa5ca3f4b22e.png)
 ![dashboard](https://user-images.githubusercontent.com/16426747/136692345-3864e377-524a-4472-9d52-9eabce6cde3b.png)
@@ -67,20 +69,15 @@ Push your source code to github and submit the repo link.
 
 ### Evaluation Criteria
 
-- The required functions are working:
-  - Login
-  - Display dashboard
-  - Make transaction
-  - Refresh
-
 * The required functions are working:
-
   - Login
-  - Display dashboard
+  - Dashboard
+
+* The bonus challenge has been implemented:
+  - Register
   - Make transfer
 
 * The code is well-designed
-
   - Function
   - Interaction
 
@@ -89,7 +86,6 @@ Push your source code to github and submit the repo link.
 * The code isn't more complex than it needs to be
 
 * Code has appropriate unit tests
-
   - Tests are well designed
   - Coverage
 
